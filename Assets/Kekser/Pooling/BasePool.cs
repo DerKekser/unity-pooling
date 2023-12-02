@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Game.Scripts.Helper.Pooling
+namespace Kekser.Pooling
 {
     public abstract class BasePool : ScriptableObject, IPool
     {

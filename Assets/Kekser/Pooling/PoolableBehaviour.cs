@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Game.Scripts.Helper.Pooling
+namespace Kekser.Pooling
 {
     public abstract class PoolableBehaviour : MonoBehaviour, IPoolable
     {

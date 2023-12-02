@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.Scripts.Helper.Pooling
+namespace Kekser.Pooling
 {
     public interface IPool
     {
