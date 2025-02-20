@@ -33,6 +33,8 @@ namespace Kekser.Pooling
         private List<T> _active = new List<T>();
         [NonSerialized]
         private Dictionary<string, List<T>> _scenePool = new Dictionary<string, List<T>>();
+        
+        public T Prefab => _prefab;
 
         public sealed override void Prewarm()
         {
