@@ -1,9 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Kekser.Pooling
 {
     public abstract class PoolableBehaviour : MonoBehaviour, IPoolable
     {
+        private readonly Dictionary<MonoBehaviour, bool> _enabledComponents = new Dictionary<MonoBehaviour, bool>();
+        protected virtual bool StoreEnabledComponentState => false;
+        
         protected IPool _pool;
         private bool _internalDestroyed;
         
@@ -42,6 +46,11 @@ namespace Kekser.Pooling
         {
             gameObject.SetActive(false);
             //OnDespawn();
+            
+            if (StoreEnabledComponentState)
+                foreach (KeyValuePair<MonoBehaviour, bool> component in _enabledComponents)
+                    component.Key.enabled = component.Value;
+
             gameObject.SendMessage("OnDespawn", SendMessageOptions.DontRequireReceiver);
         }
         
@@ -55,6 +64,10 @@ namespace Kekser.Pooling
                 Debug.LogWarning("PoolableBehaviour is not spawned from a pool");
                 OnSpawn();
             }
+
+            if (StoreEnabledComponentState)
+                foreach (var component in GetComponentsInChildren<MonoBehaviour>())
+                    _enabledComponents[component] = component.enabled;
         }
 
         protected virtual void OnDestroy()
