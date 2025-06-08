@@ -44,14 +44,13 @@ namespace Kekser.Pooling
 
         public void OnDespawnInternal()
         {
+            gameObject.SendMessage("OnDespawn", SendMessageOptions.DontRequireReceiver);
             gameObject.SetActive(false);
             //OnDespawn();
             
             if (StoreEnabledComponentState)
                 foreach (KeyValuePair<MonoBehaviour, bool> component in _enabledComponents)
                     component.Key.enabled = component.Value;
-
-            gameObject.SendMessage("OnDespawn", SendMessageOptions.DontRequireReceiver);
         }
         
         public virtual void OnSpawn() {}

@@ -2,7 +2,7 @@
     "name": "com.kekser.pooling",
     "displayName": "Pooling",
     "author": { "name": "Kekser", "url": "https://github.com/DerKekser" },
-    "version": "1.0.0",
+    "version": "1.0.1",
     "unity": "2020.3",
     "description": "A pooling system for Unity",
     "keywords": [ "pooling", "pool", "object", "objects", "object pooling", "object pool" ],
